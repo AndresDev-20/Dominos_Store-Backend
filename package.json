@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +15,8 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
-    "nodemo": "^1.0.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
     "sequelize": "^6.37.7",
     "sequelize-cli": "^6.6.3"
   }

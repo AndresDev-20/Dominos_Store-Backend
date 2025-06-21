@@ -17,7 +17,7 @@ app.use(cors());
 
 app.use('/api/v1', router);
 app.get('/', (req, res) => {
-    res.send('¡Hola, mundo! Esta es nuestra API de ejemplo.');
+    res.send('¡Hola, mundo! Esta es nuestra API de bienvenida.');
 })
 
 module.exports = app;

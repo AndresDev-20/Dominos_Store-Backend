@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const router = require('./routers');
+const path = require('path')
 require('dotenv').config();
 
 // Esta es nuestra aplicación
@@ -17,7 +18,7 @@ app.use(cors());
 
 app.use('/api/v1', router);
 app.get('/', (req, res) => {
-    res.send('¡Hola, mundo! Esta es nuestra API de bienvenida.');
+    res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
 module.exports = app;

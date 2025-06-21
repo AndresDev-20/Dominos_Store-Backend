@@ -1,4 +1,3 @@
-const { default: open } = require('open');
 const { sequelize } = require('./api/models');
 const app = require('./app');
 

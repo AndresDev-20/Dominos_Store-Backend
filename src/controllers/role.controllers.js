@@ -1,24 +1,19 @@
 const { Role } = require("../api/models");
+const catchError = require("../utils/catchError");
 
-const getAllRoles = async (req, res) => {
-  try {
-    const roles = await Role.findAll()
-    return res.json(roles)
-  } catch (error) {
-    console.error("Error fetching roles", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-};
 
-const create = async (req, res) => {
-  const data = req.body;
-  try {
-    const newRole = await Role.create(data)
-    return res.json(newRole)
-  } catch (error) {
-    res.status(500).json({ error: "Internal server error" });
-  }
-}
+
+const getAllRoles = catchError(async(req, res) => {
+  const roles = await Role.findAll();
+  return res.json(roles)
+})
+
+
+const create = catchError(async(req, res) => {
+  let newRole = req.body;
+  const addRole = await Role.create(newRole)
+  return res.json({message: "El rol se creo exitosamente", addRole})
+})
 
 
 module.exports = {

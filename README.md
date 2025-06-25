@@ -1,8 +1,8 @@
-# 🛒 Dominós Store - Backend
+# 🛒 Dominós Store - Backend 👨‍💻en desarrollo👨‍💻
 
 Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado con Node.js, Express y Sequelize (con CLI y migraciones). Este backend está diseñado para gestionar usuarios, roles, productos, compras, carritos, direcciones y más.
 
-## 🚀 Tecnologías Usadas
+## 🚀 Tecnologías Usadas hasta el momento
 
 - Node.js
 - Express.js
@@ -34,9 +34,24 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 - Crear, actualizar y eliminar roles  
 - Relación: un usuario pertenece a un rol, un rol tiene muchos usuarios  
 
+## 🌐 Rutas disponibles hasta el momento
+
+**Ruta base:** `/api/v1`
+
+### 📁 Roles `/api/v1/roles`
+- `GET /` → Obtener todos los roles  
+- `POST /` → Crear un nuevo rol  
+- `PUT /:id` → Actualizar un rol por ID  
+- `DELETE /:id` → Eliminar un rol por ID  
+
+### 👤 Usuarios `/api/v1/users`
+- `GET /` → Obtener todos los usuarios (sin contraseña)  
+- `GET /:id` → Obtener un usuario por ID (sin contraseña)  
+- `POST /` → Crear un nuevo usuario (contraseña encriptada con bcrypt)  
+
 ## 📤 Ejemplos de Peticiones
 
-### GET /api/users
+### GET /api/v1/users
 
 [  
   {  
@@ -50,33 +65,23 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
   }  
 ]
 
-### POST /api/roles
+### POST /api/v1/roles
 
 {  
   "namerole": "cliente"  
 }
 
-## 📄 Diseño de Base de Datos
-
-📁 Ver archivo `Docuemnto 2 - DISEÑO DE LA BASE DE DATOS.pdf` incluido en la raíz del proyecto.
-
-Incluye:
-- Diagrama Entidad-Relación (DER)
-- Diccionario de datos
-- Reglas de integridad (1NF, 2NF, 3NF)
-- Relaciones entre entidades
-- Modelo de base de datos flexible y escalable
-
 ## 🧠 Autor
 
 **Yeison Andrés Marroquín Bernal**  
-Desarrollador Backend - Dominós Store  
+Desarrollador Full Stack - Dominós Store  
 Abril - Junio 2025
 
 ## 📬 Contacto
 
-- Email: andres.dev@email.com  
-- LinkedIn: https://www.linkedin.com/in/yeison-andres  
+- Email: yeisonmarroquin887@email.com  
+- Sitio web: https://portafolio-andres-dev.netlify.app/
+- LinkedIn: https://www.linkedin.com/in/yeison-andres-marroqu%C3%ADn-bernal-008138266/
 
 ## ✅ Por hacer
 

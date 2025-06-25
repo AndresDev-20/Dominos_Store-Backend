@@ -1,4 +1,5 @@
 const { User, Role } = require('../api/models')
+const { generateToken } = require('../auth/jwt')
 const catchError = require('../utils/catchError')
 const bcrypt = require('bcrypt')
 
@@ -51,15 +52,42 @@ const update = catchError(async(req, res) => {
 const remove = catchError(async(req, res) => {
     const {id} = req.params;
     const userDelete = await User.destroy({where: {id}})
-    if(userDelete[0] !== 1) return res.status(404).json({Error: "El usuario no existe por ende no se ha eliminado"});
+    if(userDelete !== 1) return res.status(404).json({Error: "El usuario no existe por ende no se ha eliminado"});
     return res.status(204).send()
 })
 
+// logear un usuario y generar el token para los permisos
+const loggin = catchError(async(req, res) => {
+    const {email, password} = req.body;
+    const user = await User.findOne({
+        where: {email},
+        include: [{model: Role, as: "role"}]
+    });
+    if(!user) return res.status(404).json({error: "El usuario no existe en la base de datos"});
+    const verifyPassword = await bcrypt.compare(password, user.password)
+    if(!verifyPassword) return res.status(404).json({message: "Contraseña incorrecta"});
+    const payload = {
+        id: user.id,
+        role: user.role.namerole
+    }
+    const token = generateToken(payload)
+    return res.status(200).json({
+        message: "Login exitoso",
+        token,
+        user: {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role.namerole,
+        }
+    })
+})
 
 module.exports = {
     getAllUsers,
     getUserById,
     create,
     update,
-    remove
+    remove,
+    loggin
 }

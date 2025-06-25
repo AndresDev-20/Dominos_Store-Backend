@@ -4,12 +4,12 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 
 ## 🚀 Tecnologías Usadas hasta el momento
 
-- Node.js
-- Express.js
-- MySQL
-- Sequelize CLI
-- bcrypt
-- Nodemon
+- Node.js  
+- Express.js  
+- MySQL  
+- Sequelize CLI  
+- bcrypt  
+- Nodemon  
 
 ## ⚙️ Configuración
 
@@ -29,7 +29,7 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 
 - Ver todos los usuarios  
 - Ver usuario por ID  
-- Crear usuario (con contraseña encriptada)  
+- Crear, actualizar y eliminar usuarios (con contraseña encriptada)  
 - Ver todos los roles  
 - Crear, actualizar y eliminar roles  
 - Relación: un usuario pertenece a un rol, un rol tiene muchos usuarios  
@@ -46,30 +46,36 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 
 ### 👤 Usuarios `/api/v1/users`
 - `GET /` → Obtener todos los usuarios (sin contraseña)  
-- `GET /:id` → Obtener un usuario por ID (sin contraseña)  
-- `POST /` → Crear un nuevo usuario (contraseña encriptada con bcrypt)  
+- `GET /:id` → Obtener un usuario por ID  
+- `POST /` → Crear un nuevo usuario  
+- `PUT /:id` → Actualizar un usuario por ID  
+- `DELETE /:id` → Eliminar un usuario por ID  
 
 ## 📤 Ejemplos de Peticiones
 
 ### GET /api/v1/users
 
-[  
-  {  
-    "id": 1,  
-    "name": "Juan",  
-    "email": "juan@mail.com",  
-    "role": {  
-      "id": 2,  
-      "namerole": "admin"  
-    }  
-  }  
+```json
+[
+  {
+    "id": 1,
+    "name": "Juan",
+    "email": "juan@mail.com",
+    "role": {
+      "id": 2,
+      "namerole": "admin"
+    }
+  }
 ]
+```
 
 ### POST /api/v1/roles
 
-{  
-  "namerole": "cliente"  
+```json
+{
+  "namerole": "cliente"
 }
+```
 
 ## 🧠 Autor
 
@@ -80,7 +86,7 @@ Abril - Junio 2025
 ## 📬 Contacto
 
 - Email: yeisonmarroquin887@email.com  
-- Sitio web: https://portafolio-andres-dev.netlify.app/
+- Sitio web: https://portafolio-andres-dev.netlify.app/  
 - LinkedIn: https://www.linkedin.com/in/yeison-andres-marroqu%C3%ADn-bernal-008138266/
 
 ## ✅ Por hacer
@@ -89,5 +95,5 @@ Abril - Junio 2025
 - Seguridad con JWT  
 - Roles y permisos (admin vs cliente)  
 - Seeders iniciales (roles, admin)  
-- Dockerizar
-- Y mucho mas 😼
+- Dockerizar  
+- Y mucho más 😼  

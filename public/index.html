@@ -1,19 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dominos Backend</title>
-    <style>
-        h1 {
-            color: rgb(20, 9, 102);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dominos Store - Backend API</title>
+  <style>
+    :root {
+      --color-bg: #f5f7fa;
+      --color-primary: #1e3a8a;
+      --color-secondary: #4b5563;
+      --color-accent: #2563eb;
+      --color-border: #d1d5db;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: var(--font-main);
+      background-color: var(--color-bg);
+      color: var(--color-secondary);
+    }
+
+    .doc {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+      border: 1px solid var(--color-border);
+    }
+
+    .doc__title {
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+    }
+
+    .doc__subtitle {
+      font-size: 1.3rem;
+      margin-top: 0;
+      color: #6b7280;
+    }
+
+    .doc__section {
+      margin-top: 2rem;
+    }
+
+    .doc__section-title {
+      color: var(--color-accent);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .doc__list {
+      list-style-type: none;
+      padding-left: 1rem;
+      margin: 0;
+    }
+
+    .doc__list li {
+      padding: 0.4rem 0;
+      border-left: 3px solid var(--color-accent);
+      padding-left: 0.8rem;
+      background-color: #f0f4ff;
+      margin-bottom: 0.3rem;
+      border-radius: 6px;
+    }
+
+    .doc__code {
+      background-color: #e2e8f0;
+      padding: 2px 6px;
+      font-family: monospace;
+      border-radius: 4px;
+    }
+
+    .doc__footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      border-top: 1px solid var(--color-border);
+      padding-top: 1rem;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>¡Hola, mundo! Esta es nuestra API de bienvenida para el backend del ecomerce Dominos Store. 👋</h1>
+  <div class="doc">
+    <h1 class="doc__title">📡 Backend API - Dominos Store 👨‍💻En Desarrollo👨‍💻</h1>
+    <p class="doc__subtitle">Bienvenido al backend del ecommerce "Dominos Store". Aquí encuentras una descripción rápida del estado del servidor y sus rutas disponibles.</p>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">📦 Descripción</h2>
+      <p>API REST construida con Node.js, Express y Sequelize (ORM con migraciones), conectada a MySQL. Esta API permite manejar usuarios, roles, y próximamente productos, carritos, y pedidos.</p>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">🚀 Rutas disponibles (versión v1)</h2>
+      <ul class="doc__list">
+        <li><span class="doc__code">GET /api/v1/roles</span> → Lista todos los roles</li>
+        <li><span class="doc__code">POST /api/v1/roles</span> → Crea un nuevo rol</li>
+        <li><span class="doc__code">PUT /api/v1/roles/:id</span> → Actualiza un rol por ID</li>
+        <li><span class="doc__code">DELETE /api/v1/roles/:id</span> → Elimina un rol por ID</li>
+        <li><span class="doc__code">GET /api/v1/users</span> → Lista todos los usuarios (sin contraseña)</li>
+        <li><span class="doc__code">GET /api/v1/users/:id</span> → Muestra un usuario por ID</li>
+        <li><span class="doc__code">POST /api/v1/users</span> → Crea un nuevo usuario</li>
+      </ul>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">🛠 Tecnologías utilizadas hasta el momento</h2>
+      <ul class="doc__list">
+        <li>Node.js</li>
+        <li>Express.js</li>
+        <li>MySQL</li>
+        <li>Sequelize CLI (con migraciones)</li>
+        <li>Bcrypt</li>
+      </ul>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">📄 Estado actual</h2>
+      <p>✅ Backend funcional y en desarrollo activo. CRUD completo de roles y usuarios listo.</p>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">👨‍💻 Autor</h2>
+      <p><strong>Yeison Andrés Marroquín Bernal</strong><br>Desarrollador Full Stack - Proyecto académico 2025</p>
+    </div>
+
+    <div class="doc__footer">
+      Dominós Store Backend API — 2025
+    </div>
+  </div>
 </body>
 
 </html>

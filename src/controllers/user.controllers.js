@@ -34,9 +34,32 @@ const create = catchError(async(req, res) => {
     return res.status(201).json({message: "Usuario registrado", addUser})
 })
 
+// Actualizar usuario
+const update = catchError(async(req, res) => {
+    const {name, email, password, rolId} = req.body;
+    const {id} = req.params;
+    const hashedPassword = await bcrypt.hash(password, 10)
+    const updateUser = await User.update(
+        {name, email, password: hashedPassword, rolId},
+        {where: {id}}
+    )
+    if(updateUser[0] !== 1) return res.status(404).json({error:"El usuario no existe en la base de datos"});
+    return res.status(200).json({message: "Usuario actualizado exitisamente"})
+})
+
+// Eliminar un usuario por id
+const remove = catchError(async(req, res) => {
+    const {id} = req.params;
+    const userDelete = await User.destroy({where: {id}})
+    if(userDelete[0] !== 1) return res.status(404).json({Error: "El usuario no existe por ende no se ha eliminado"});
+    return res.status(204).send()
+})
+
 
 module.exports = {
     getAllUsers,
     getUserById,
-    create
+    create,
+    update,
+    remove
 }

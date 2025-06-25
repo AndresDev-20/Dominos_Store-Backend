@@ -46,13 +46,20 @@
     }
 
     .doc__section {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
     }
 
     .doc__section-title {
       color: var(--color-accent);
       font-size: 1.4rem;
       margin-bottom: 0.5rem;
+    }
+
+    .doc__subsection-title {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      color: #374151;
     }
 
     .doc__list {
@@ -94,16 +101,22 @@
 
     <div class="doc__section">
       <h2 class="doc__section-title">📦 Descripción</h2>
-      <p>API REST construida con Node.js, Express y Sequelize (ORM con migraciones), conectada a MySQL. Esta API permite manejar usuarios, roles, y próximamente productos, carritos, y pedidos.</p>
+      <p>API REST construida con Node.js, Express y Sequelize (ORM con migraciones), conectada a MySQL. Esta API permite manejar usuarios, roles, y próximamente productos, carritos y pedidos.</p>
     </div>
 
     <div class="doc__section">
       <h2 class="doc__section-title">🚀 Rutas disponibles (versión v1)</h2>
+
+      <h3 class="doc__subsection-title">🔐 Rutas de Roles</h3>
       <ul class="doc__list">
         <li><span class="doc__code">GET /api/v1/roles</span> → Lista todos los roles</li>
         <li><span class="doc__code">POST /api/v1/roles</span> → Crea un nuevo rol</li>
         <li><span class="doc__code">PUT /api/v1/roles/:id</span> → Actualiza un rol por ID</li>
         <li><span class="doc__code">DELETE /api/v1/roles/:id</span> → Elimina un rol por ID</li>
+      </ul>
+
+      <h3 class="doc__subsection-title">👤 Rutas de Usuarios</h3>
+      <ul class="doc__list">
         <li><span class="doc__code">GET /api/v1/users</span> → Lista todos los usuarios (sin contraseña)</li>
         <li><span class="doc__code">GET /api/v1/users/:id</span> → Muestra un usuario por ID</li>
         <li><span class="doc__code">POST /api/v1/users</span> → Crea un nuevo usuario</li>

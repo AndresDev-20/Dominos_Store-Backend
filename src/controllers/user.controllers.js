@@ -45,7 +45,7 @@ const update = catchError(async(req, res) => {
         {where: {id}}
     )
     if(updateUser[0] !== 1) return res.status(404).json({error:"El usuario no existe en la base de datos"});
-    return res.status(200).json({message: "Usuario actualizado exitisamente"})
+    return res.status(200).json({message: "Usuario actualizado exitosamente"})
 })
 
 // Eliminar un usuario por id

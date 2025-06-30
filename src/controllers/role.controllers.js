@@ -5,14 +5,14 @@ const catchError = require("../utils/catchError");
 // Ver todos los roles
 const getAllRoles = catchError(async(req, res) => {
   const roles = await Role.findAll();
-  return res.json(roles)
+  return res.status(201).json(roles)
 })
 
 // Crear un rol
 const create = catchError(async(req, res) => {
   let newRole = req.body;
   const addRole = await Role.create(newRole)
-  return res.json({message: "El rol se creo exitosamente", addRole})
+  return res.status(201).json({message: "El rol se creo exitosamente", addRole})
 })
 
 //Eliminar un rol por id

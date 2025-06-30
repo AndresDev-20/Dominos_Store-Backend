@@ -10,7 +10,7 @@ const getAllUsers = catchError(async(req, res) => {
         attributes: {exclude: ["password", "rolId"]},
         include: [{model: Role, as: "role"}]
     });
-    return res.json(users);
+    return res.status(201).json(users);
 })
 
 // Filtrado por id

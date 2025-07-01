@@ -32,10 +32,19 @@ const update = catchError(async(req, res) => {
     return res.status(200).json({message: "Producto actualizado exitosamente"})
 })
 
+//Eliminar produto 
+const remove = catchError(async(req, res) => {
+    const { id } = req.params;
+    const deleteProduct = await Product.destroy({where: {id}})
+    if(deleteProduct !== 1) return res.status(404).json({Error: "Producto no encontrado"});
+    return res.status(204).send()
+})
+
 
 module.exports = {
     getAllProducts,
     getProductById,
     create,
-    update
+    update,
+    remove
 }

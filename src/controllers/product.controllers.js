@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const { Product } = require("../api/models");
 const catchError = require("../utils/catchError");
 

@@ -2,6 +2,8 @@
 
 Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado con Node.js, Express y Sequelize (con CLI y migraciones). Este backend está diseñado para gestionar usuarios, roles, productos, compras, carritos, direcciones y más.
 
+---
+
 ## 🚀 Tecnologías Usadas hasta el momento
 
 - Node.js  
@@ -9,7 +11,10 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 - MySQL  
 - Sequelize CLI  
 - bcrypt  
+- JWT (Json Web Token)  
 - Nodemon  
+
+---
 
 ## ⚙️ Configuración
 
@@ -25,14 +30,16 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 6. Iniciar servidor:  
    `npm run dev`
 
+---
+
 ## 📌 Funcionalidades actuales
 
-- Ver todos los usuarios  
-- Ver usuario por ID  
-- Crear, actualizar y eliminar usuarios (con contraseña encriptada)  
-- Ver todos los roles  
-- Crear, actualizar y eliminar roles  
+- CRUD completo de usuarios  
+- CRUD completo de roles  
+- CRUD completo de productos  
 - Relación: un usuario pertenece a un rol, un rol tiene muchos usuarios  
+
+---
 
 ## 🌐 Rutas disponibles hasta el momento
 
@@ -51,9 +58,18 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 - `PUT /:id` → Actualizar un usuario por ID  
 - `DELETE /:id` → Eliminar un usuario por ID  
 
+### 🛒 Productos `/api/v1/products`
+- `GET /` → Obtener todos los productos  
+- `GET /:id` → Obtener un producto por ID  
+- `POST /` → Crear un nuevo producto  
+- `PUT /:id` → Actualizar un producto por ID  
+- `DELETE /:id` → Eliminar un producto por ID  
+
+---
+
 ## 📤 Ejemplos de Peticiones
 
-### GET /api/v1/users
+### 🔍 GET /api/v1/users
 
 ```json
 [

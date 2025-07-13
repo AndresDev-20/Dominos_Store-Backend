@@ -11,6 +11,14 @@ module.exports = {
         rolId: 20,
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        name: "Alan.dev",
+        email: "alan.dev@example.com",
+        password: "Futuro123",
+        rolId: 20,
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {});
   },

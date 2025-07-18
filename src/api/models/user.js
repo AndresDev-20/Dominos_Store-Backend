@@ -14,7 +14,15 @@ module.exports = (sequelize, DataTypes) => {
         as: 'role',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
-      })
+      }),
+
+      // Un usuario puede tener un carro
+      User.hasOne(models.Cart, {
+        foreignKey: 'userId',
+        as: 'cart',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      });
     }
   }
   User.init(

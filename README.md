@@ -65,7 +65,7 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 - `PUT /:id` → Actualizar un producto por ID  
 - `DELETE /:id` → Eliminar un producto por ID  
 
-### 🛒 Productos `/api/v1/carts`
+### 🛒 Carrito `/api/v1/carts`
 - `GET /` → Obtener todos los carritos 
 ---
 

@@ -13,6 +13,17 @@ const createCart = catchError(async (req, res) => {
     return res.status(201).json(newCart);
 });
 
+// actualizar un carrito
+const updateCart = catchError(async (req, res) => {
+    const { id } = req.params;
+    const [updated] = await Cart.update(req.body, { where: { id } });
+    if (!updated) {
+        return res.status(404).send();
+    }
+    const updatedCart = await Cart.findByPk(id);
+    return res.status(200).json(updatedCart);
+});
+
 // eliminar un carrito
 const deleteCart = catchError(async (req, res) => {
     const { id } = req.params;
@@ -24,4 +35,5 @@ module.exports = {
     getAllCarts,
     createCart,
     deleteCart,
+    updateCart
 }

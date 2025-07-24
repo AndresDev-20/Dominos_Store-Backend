@@ -7,6 +7,16 @@ const getAllCarts = catchError(async (req, res) => {
     return res.status(200).json(carts);
 });
 
+//Obtener un carrito por ID
+const getCartById = catchError(async (req, res) => {
+    const { id } = req.params;
+    const cart = await Cart.findByPk(id);
+    if (!cart) {
+        return res.status(404).send();
+    }
+    return res.status(200).json(cart);
+});
+
 // crear un carrito
 const createCart = catchError(async (req, res) => {
     const newCart = await Cart.create(req.body);

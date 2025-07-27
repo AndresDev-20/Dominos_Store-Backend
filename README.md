@@ -67,6 +67,8 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 
 ### 🛒 Carrito `/api/v1/carts`
 - `GET /` → Obtener todos los carritos 
+- `GET /:id` → Obtener un carro por ID
+- `GET /` → Obtener todos los carritos 
 ---
 
 ## 📤 Ejemplos de Peticiones

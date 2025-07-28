@@ -1,9 +1,9 @@
-const { Cart } = require('../api/models');
+const { Cart, DetailCart } = require('../api/models');
 const catchError = require('../utils/catchError');
 
 // Obtener todos los carritos
 const getAllCarts = catchError(async (req, res) => {
-    const carts = await Cart.findAll();
+    const carts = await Cart.findAll({include: { model: DetailCart, as: 'details' }});
     return res.status(200).json(carts);
 });
 

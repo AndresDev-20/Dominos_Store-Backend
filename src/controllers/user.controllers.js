@@ -1,4 +1,4 @@
-const { User, Role, Cart } = require('../api/models')
+const { User, Role, Cart, DetailCart, Product } = require('../api/models')
 const { generateToken } = require('../auth/jwt')
 const catchError = require('../utils/catchError')
 const bcrypt = require('bcrypt')
@@ -8,7 +8,17 @@ const bcrypt = require('bcrypt')
 const getAllUsers = catchError(async(req, res) => {
     const users = await User.findAll({
         attributes: {exclude: ["password", "rolId"]},
-        include: [{model: Role, as: "role"}, {model: Cart, as: "cart"}]
+        include: [
+            {model: Role, as: "role"},
+            {model: Cart, as: "cart",
+                include: [
+                    {model: DetailCart, as: "details",
+                        include: [
+                            {model: Product, as: "product"}
+                        ]
+                    }
+                ]
+            }]
     });
     return res.status(201).json(users);
 })
@@ -20,7 +30,16 @@ const getUserById = catchError(async(req, res) => {
         id,
         {
             attributes: {exclude: ["password", "rolId"]},
-            include: [{model: Role, as: "role"}]
+            include: [{model: Role, as: "role"}, 
+                      {model: Cart, as: "cart",
+                        include: [
+                            {model: DetailCart, as: "details",
+                                include: [
+                                    {model: Product, as: "product"}
+                                ]
+                            }
+                        ]
+                    }]
         }
     );
     if(!user) return res.status(404).json({error:"El usuario no existe en la base de datos"});

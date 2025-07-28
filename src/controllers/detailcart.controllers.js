@@ -1,10 +1,10 @@
-const { DetailCart } = require('../api/models');
+const { DetailCart, Product } = require('../api/models');
 const catchError = require('../utils/catchError');
 
 
 // Obtener todos los detalles de carrito
 const getAllCarts = catchError(async(req, res) => {
-    const detail = await DetailCart.findAll();
+    const detail = await DetailCart.findAll({include: { model: Product, as: 'product' }});
     return res.status(200).json(detail);
 })
 
@@ -19,9 +19,10 @@ const getDetailById = catchError(async(req, res) => {
 // Crear un detalle de carrito
 const createDetailCart = catchError(async(req, res) => {
     const data = req.body;
-    if(!data.cartId || !data.productId || !data.quantity) {
-        return res.status(400).json({error: "Faltan datos requeridos para crear el detalle de carrito"});
-    }
+    console.log(data);
+    const product = await DetailCart.findOne({ where: { productId: data.productId } });
+    const cart = await DetailCart.findOne({ where: { cartId: data.cartId } });
+    if(product == null || cart == null) return res.status(404).json({error: "Producto o carrito no encontrado"});
     const newDetail = await DetailCart.create(data);
     return res.status(201).json({message: "Detalle de carrito creado exitosamente", newDetail: newDetail});
 })

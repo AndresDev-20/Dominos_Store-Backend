@@ -27,6 +27,17 @@ const createDetailCart = catchError(async(req, res) => {
     return res.status(201).json({message: "Detalle de carrito creado exitosamente", newDetail: newDetail});
 })
 
+
+// eliminar un detalle de carrito
+const deleteDetailCart = catchError(async(req, res) => {
+    const { id } = req.params;
+    const detail = await DetailCart.findByPk(id);
+    if(!detail) return res.status(404).json({error: "Detalle de carrito no encontrado"});
+    await detail.destroy();
+    return res.status(204).send();
+})
+
+// Exportar las funciones
 module.exports = {
     getAllCarts,
     getDetailById,

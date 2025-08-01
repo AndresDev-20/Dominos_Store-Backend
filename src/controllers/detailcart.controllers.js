@@ -19,7 +19,6 @@ const getDetailById = catchError(async(req, res) => {
 // Crear un detalle de carrito
 const createDetailCart = catchError(async(req, res) => {
     const data = req.body;
-    console.log(data);
     const product = await DetailCart.findOne({ where: { productId: data.productId } });
     const cart = await DetailCart.findOne({ where: { cartId: data.cartId } });
     if(product == null || cart == null) return res.status(404).json({error: "Producto o carrito no encontrado"});

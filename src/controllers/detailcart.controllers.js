@@ -41,5 +41,6 @@ const deleteDetailCart = catchError(async(req, res) => {
 module.exports = {
     getAllCarts,
     getDetailById,
-    createDetailCart
+    createDetailCart,
+    deleteDetailCart
 }

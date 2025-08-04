@@ -38,10 +38,10 @@ const deleteDetailCart = catchError(async(req, res) => {
 // Actualizar un detalle de carrito (no implementado en el router)
 const updateDetailCart = catchError(async(req, res) => {
     const { id } = req.params;
-    const data = req.body;
+    const { amount, price } = req.body;
     const detail = await DetailCart.findByPk(id);
     if(!detail) return res.status(404).json({error: "Detalle de carrito no encontrado"});
-    await detail.update(data);
+    await detail.update({ amount, price });
     return res.status(200).json({message: "Detalle de carrito actualizado exitosamente", updatedDetail: detail});
 })
 

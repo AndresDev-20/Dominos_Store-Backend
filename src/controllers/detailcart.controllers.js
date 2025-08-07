@@ -21,7 +21,8 @@ const createDetailCart = catchError(async(req, res) => {
     const data = req.body;
     const product = await Product.findOne({ where: { id: data.productId } });
     const cart = await Cart.findOne({ where: { id: data.cartId } });
-    console.log(product, cart);
+    const detailExists = await DetailCart.findOne({ where: { productId: data.productId } });
+    if(detailExists !== null) return res.status(404).json({error: "Ya el producto esta en el carrito"});
     if(product == null || cart == null) return res.status(404).json({error: "Producto o carrito no encontrado"});
     const newDetail = await DetailCart.create(data);
     return res.status(201).json({message: "Detalle de carrito creado exitosamente", newDetail: newDetail});
@@ -43,11 +44,10 @@ const updateDetailCart = catchError(async(req, res) => {
     const detail = await DetailCart.findByPk(id, {
         include: { model: Product, as: 'product' }
     });
-    const priceAmount = detail.product.price;
-    console.log(amount, priceAmount);
-    //if(!detail) return res.status(404).json({error: "Detalle de carrito no encontrado"});
-    //const updatedDetail = await detail.update({ amount, price: priceAmount });
-    //return res.status(200).json({message: "Detalle de carrito actualizado exitosamente", updatedDetail: updatedDetail});
+    const priceAmount = detail.product.price * amount;
+    if(!detail) return res.status(404).json({error: "Detalle de carrito no encontrado"});
+    const updatedDetail = await detail.update({ amount, price: priceAmount });
+    return res.status(200).json({message: "Detalle de carrito actualizado exitosamente", updatedDetail: updatedDetail});
 })
 
 

@@ -91,73 +91,144 @@
       border-top: 1px solid var(--color-border);
       padding-top: 1rem;
     }
+
+    pre {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: monospace;
+    }
   </style>
 </head>
 
 <body>
   <div class="doc">
-    <h1 class="doc__title">📡 Backend API - Dominos Store 👨‍💻En Desarrollo👨‍💻</h1>
-    <p class="doc__subtitle">Bienvenido al backend del ecommerce "Dominos Store". Aquí encuentras una descripción rápida del estado del servidor y sus rutas disponibles.</p>
+    <h1 class="doc__title">📡 Backend API - Dominós Store 👨‍💻 En Desarrollo 👨‍💻</h1>
+    <p class="doc__subtitle">Bienvenido al backend del ecommerce "Dominós Store". Aquí encuentras una descripción rápida del servidor y sus rutas disponibles.</p>
 
     <div class="doc__section">
       <h2 class="doc__section-title">📦 Descripción</h2>
-      <p>API REST construida con Node.js, Express y Sequelize (ORM con migraciones), conectada a MySQL. Esta API permite manejar usuarios, roles, y próximamente productos, carritos y pedidos.</p>
+      <p>API REST construida con Node.js, Express y Sequelize (ORM con CLI y migraciones), conectada a MySQL. Permite manejar usuarios, roles, productos, carritos, direcciones, compras y más.</p>
     </div>
 
     <div class="doc__section">
-      <h2 class="doc__section-title">🚀 Rutas disponibles (versión v1)</h2>
-
-      <h3 class="doc__subsection-title">🔐 Rutas de Roles</h3>
-      <ul class="doc__list">
-        <li><span class="doc__code">GET /api/v1/roles</span> → Lista todos los roles</li>
-        <li><span class="doc__code">POST /api/v1/roles</span> → Crea un nuevo rol</li>
-        <li><span class="doc__code">PUT /api/v1/roles/:id</span> → Actualiza un rol por ID</li>
-        <li><span class="doc__code">DELETE /api/v1/roles/:id</span> → Elimina un rol por ID</li>
-      </ul>
-
-      <h3 class="doc__subsection-title">👤 Rutas de Usuarios</h3>
-      <ul class="doc__list">
-        <li><span class="doc__code">GET /api/v1/users</span> → Lista todos los usuarios</li>
-        <li><span class="doc__code">GET /api/v1/users/:id</span> → Muestra un usuario por ID</li>
-        <li><span class="doc__code">POST /api/v1/users</span> → Crea un nuevo usuario</li>
-        <li><span class="doc__code">PUT /api/v1/users/:id</span> → Actualiza un usuario</li>
-        <li><span class="doc__code">DELETE /api/v1/users/:id</span> → Elimina un usuario</li>
-      </ul>
-
-      <h3 class="doc__subsection-title">🛒 Rutas de Productos</h3>
-      <ul class="doc__list">
-        <li><span class="doc__code">GET /api/v1/products</span> → Lista todos los productos</li>
-        <li><span class="doc__code">GET /api/v1/products/:id</span> → Muestra un producto por ID</li>
-        <li><span class="doc__code">POST /api/v1/products</span> → Crea un nuevo producto</li>
-        <li><span class="doc__code">PUT /api/v1/products/:id</span> → Actualiza un producto por ID</li>
-        <li><span class="doc__code">DELETE /api/v1/products/:id</span> → Elimina un producto por ID</li>
-      </ul>
-
-       <h3 class="doc__subsection-title">🛒 Rutas del carrito</h3>
-      <ul class="doc__list">
-        <li><span class="doc__code">GET /api/v1/carts</span> → Lista todos los carritos</li>
-    </div>
-
-    <div class="doc__section">
-      <h2 class="doc__section-title">🛠 Tecnologías utilizadas hasta el momento</h2>
+      <h2 class="doc__section-title">🛠 Tecnologías utilizadas</h2>
       <ul class="doc__list">
         <li>Node.js</li>
         <li>Express.js</li>
         <li>MySQL</li>
-        <li>Sequelize CLI (con migraciones)</li>
+        <li>Sequelize CLI</li>
         <li>Bcrypt</li>
-        <li>Json Web Token (JWT)</li>
+        <li>JWT (Json Web Token)</li>
+        <li>Nodemon</li>
       </ul>
     </div>
 
     <div class="doc__section">
-      <h2 class="doc__section-title">📄 Estado actual</h2>
-      <p>✅ Backend funcional y en desarrollo activo. CRUD completo de roles, usuarios y productos listo.</p>
+      <h2 class="doc__section-title">⚙️ Configuración rápida</h2>
+      <ul class="doc__list">
+        <li><code>git clone https://github.com/tu-usuario/dominos-store-backend.git</code></li>
+        <li><code>npm install</code></li>
+        <li>Configurar <code>config/config.js</code> con tu conexión a MySQL</li>
+        <li><code>npx sequelize db:create</code></li>
+        <li><code>npx sequelize db:migrate</code></li>
+        <li><code>npm run dev</code></li>
+      </ul>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">🚀 Rutas disponibles (v1)</h2>
+
+      <h3 class="doc__subsection-title">🔐 Roles</h3>
+      <ul class="doc__list">
+        <li><code>GET /api/v1/roles</code></li>
+        <li><code>POST /api/v1/roles</code></li>
+        <li><code>PUT /api/v1/roles/:id</code></li>
+        <li><code>DELETE /api/v1/roles/:id</code></li>
+      </ul>
+
+      <h3 class="doc__subsection-title">👤 Usuarios</h3>
+      <ul class="doc__list">
+        <li><code>GET /api/v1/users</code></li>
+        <li><code>GET /api/v1/users/:id</code></li>
+        <li><code>POST /api/v1/users</code> (Crea usuario + carrito si es cliente)</li>
+        <li><code>POST /api/v1/users/login</code></li>
+        <li><code>PUT /api/v1/users/:id</code></li>
+        <li><code>DELETE /api/v1/users/:id</code></li>
+      </ul>
+
+      <h3 class="doc__subsection-title">📦 Productos</h3>
+      <ul class="doc__list">
+        <li><code>GET /api/v1/products</code></li>
+        <li><code>GET /api/v1/products/:id</code></li>
+        <li><code>POST /api/v1/products</code></li>
+        <li><code>PUT /api/v1/products/:id</code></li>
+        <li><code>DELETE /api/v1/products/:id</code></li>
+      </ul>
+
+      <h3 class="doc__subsection-title">🛒 Carrito</h3>
+      <ul class="doc__list">
+        <li><code>GET /api/v1/carts</code></li>
+        <li><code>GET /api/v1/carts/:id</code></li>
+        <li><code>POST /api/v1/carts</code></li>
+        <li><code>PUT /api/v1/carts</code></li>
+        <li><code>DELETE /api/v1/carts</code></li>
+      </ul>
+
+      <h3 class="doc__subsection-title">🧾 Detalles del Carrito</h3>
+      <ul class="doc__list">
+        <li><code>GET /api/v1/detallecarts</code></li>
+        <li><code>GET /api/v1/detallecarts/:id</code></li>
+        <li><code>POST /api/v1/detallecarts</code></li>
+        <li><code>PUT /api/v1/detallecarts</code></li>
+        <li><code>DELETE /api/v1/detallecarts</code></li>
+      </ul>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">📤 Ejemplos de peticiones</h2>
+
+      <h3 class="doc__subsection-title">GET /api/v1/users</h3>
+      <pre><code>[
+  {
+    "id": 1,
+    "name": "Juan",
+    "email": "juan@mail.com",
+    "role": {
+      "id": 2,
+      "namerole": "admin"
+    }
+  }
+]</code></pre>
+
+      <h3 class="doc__subsection-title">POST /api/v1/roles</h3>
+      <pre><code>{
+  "namerole": "cliente"
+}</code></pre>
+    </div>
+
+    <div class="doc__section">
+      <h2 class="doc__section-title">📌 Por hacer</h2>
+      <ul class="doc__list">
+        <li>Seeders iniciales (roles y admin)</li>
+        <li>Roles y permisos (admin vs cliente)</li>
+        <li>Dockerización</li>
+        <li>CRUD de compras</li>
+      </ul>
     </div>
 
     <div class="doc__section">
       <h2 class="doc__section-title">👨‍💻 Autor</h2>
-      <p><strong>Yeison Andrés Marroquín Bernal</strong><br>Desarrollador Full Stack - Proyecto Nacional 2025</p>
+      <p><strong>Yeison Andrés Marroquín Bernal</strong><br>Desarrollador Full Stack - Dominós Store (Abril - Junio 2025)</p>
+      <p>
+        ✉️ <strong>Email:</strong> yeisonmarroquin887@email.com<br>
+        🌐 <strong>Portafolio:</strong> <a href="https://portafolio-andres-dev.netlify.app" target="_blank">portafolio-andres-dev.netlify.app</a><br>
+        💼 <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yeison-andres-marroqu%C3%ADn-bernal-008138266/" target="_blank">Perfil</a>
+      </p>
     </div>
 
     <div class="doc__footer">

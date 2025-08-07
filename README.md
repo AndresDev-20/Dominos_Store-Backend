@@ -54,7 +54,8 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 ### 👤 Usuarios `/api/v1/users`
 - `GET /` → Obtener todos los usuarios (sin contraseña)  
 - `GET /:id` → Obtener un usuario por ID  
-- `POST /` → Crear un nuevo usuario  
+- `POST /` → Crear un nuevo usuario y crea su carrito de compras si su rol es Cliente.
+- `POST /login` → Realizar el logeo de un usuario y asi obtener permisos.
 - `PUT /:id` → Actualizar un usuario por ID  
 - `DELETE /:id` → Eliminar un usuario por ID  
 
@@ -69,6 +70,16 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 - `GET /` → Obtener todos los carritos 
 - `GET /:id` → Obtener un carro por ID
 - `POST /` → Crear un nuevo carro
+- `PUT /` → Actualizar un carrito
+- `DELETE /` → Eliminar un carro aunque ellos se eliminaran al eliminarse un usuario.
+
+
+### 🛒 Detalle del Carrito `/api/v1/detallecarts`
+- `GET /` → Obtener todos los detalles del carrito 
+- `GET /:id` → Obtener un detalles del carrito por ID
+- `POST /` → Crear un nuevo detalles del carrito 
+- `PUT /` → Actualizar un detalles del carrito en cantidad y asi mismo su precio
+- `DELETE /` → Eliminar un detalles del carrito.
 
 ---
 

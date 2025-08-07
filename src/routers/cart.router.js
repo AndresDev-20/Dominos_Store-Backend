@@ -7,6 +7,8 @@ const cartRouter = express.Router();
 cartRouter.route('/')
                 .get(getAllCarts)
                 .post(createCart)
+            
+cartRouter.route('/:id')
                 .put(updateCart)
                 .delete(deleteCart);
 

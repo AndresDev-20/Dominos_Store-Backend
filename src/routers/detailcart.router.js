@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllCarts, getDetailById, createDetailCart, deleteDetailCart } = require('../controllers/detailcart.controllers');
+const { getAllCarts, getDetailById, createDetailCart, deleteDetailCart, updateDetailCart } = require('../controllers/detailcart.controllers');
 
 const detailCartRouter = express.Router();
 
@@ -9,7 +9,8 @@ detailCartRouter.route('/')
 
 detailCartRouter.route('/:id')
                 .get(getDetailById)
-                .delete(deleteDetailCart);
+                .delete(deleteDetailCart)
+                .put(updateDetailCart);
 
 
 

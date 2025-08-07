@@ -6,12 +6,20 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       // un producto pertenece a un detalle de carrito
-      Product.hasMany(models.DetailCart, {
+      Product.hasOne(models.DetailCart, {
         foreignKey: 'productId',
         as: 'details',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       });
+
+      // Un producto puede tener muchas imagenes
+      Product.hasMany(models.Image, {
+        foreignKey: 'productId',
+        as: 'images',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      })
     }
   }
   Product.init(

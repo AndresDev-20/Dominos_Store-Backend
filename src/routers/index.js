@@ -4,6 +4,7 @@ const userRouter = require('./user.router');
 const productRouter = require('./product.router');
 const cartRouter = require('./cart.router');
 const detailCartRouter = require('./detailcart.router');
+const imageRouter = require('./image.router');
 const router = express.Router()
 
 // Aca colocare mis rutas del proyecto
@@ -12,6 +13,7 @@ router.use('/users', userRouter)
 router.use('/products', productRouter)
 router.use('/carts', cartRouter)
 router.use('/detailcarts', detailCartRouter)
+router.use('/images', imageRouter)
 
 
 module.exports = router;

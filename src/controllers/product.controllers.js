@@ -1,5 +1,6 @@
 const { Product, Image } = require("../api/models");
 const catchError = require("../utils/catchError");
+const { deleteFromCloudinary } = require('../utils/cloudinary');
 
 
 // Visualizacion de todos los productos
@@ -34,10 +35,20 @@ const update = catchError(async(req, res) => {
 //Eliminar produto 
 const remove = catchError(async(req, res) => {
     const { id } = req.params;
-    const deleteProduct = await Product.destroy({where: {id}})
-    if(deleteProduct !== 1) return res.status(404).json({Error: "Producto no encontrado"});
+    const product = await Product.findByPk(id, { include: [{ model: Image, as: 'images' }] });
+    if (!product) return res.status(404).json({ error: "Producto no encontrado" });
+    // Eliminar las imágenes en Cloudinary
+    for (const image of product.images) {
+        await deleteFromCloudinary(image.publicId);
+    }
+     // Eliminar las imágenes de la base de datos
+    await Image.destroy({ where: { productId: id } });
+    // Eliminar el producto
+    await Product.destroy({ where: { id } });
     return res.status(204).send()
 })
+
+
 
 
 module.exports = {

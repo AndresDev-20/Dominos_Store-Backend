@@ -11,10 +11,12 @@ const getAllImages = catchError(async(req, res) => {
 
 // Crear una imagen 
 const createImage = catchError(async(req, res) => {
-    const { path, filename } = req.file;
+    const { path, filename} = req.file;
+    const { productId } = req.body;
     const { url, public_id } = await uploadToCloudinary(path, filename);
-    const body = { url, filename: public_id } 
-    return res.status(201).json(body);
+    const data = { url, publicId: public_id, altText: public_id, productId: parseInt(productId) }; 
+    await Image.create(data);
+    return res.status(201).json(data);
 
 });
 

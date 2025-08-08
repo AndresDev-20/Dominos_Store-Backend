@@ -19,8 +19,16 @@ module.exports = (sequelize, DataTypes) => {
   Image.init({
     url: {
       type: DataTypes.STRING,
+      allowNull: false
+    },
+    publicId: { // Para eliminar/editar en Cloudinary
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true
+    },
+    altText: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     productId: {
       type: DataTypes.INTEGER,

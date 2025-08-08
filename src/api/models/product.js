@@ -43,10 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       categoryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      imagesId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
       }
     },
     {

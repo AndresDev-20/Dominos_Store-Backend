@@ -1,17 +1,17 @@
-const { Product } = require("../api/models");
+const { Product, Image } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 
 // Visualizacion de todos los productos
 const getAllProducts = catchError(async(req, res) => {
-    const products = await Product.findAll();
+    const products = await Product.findAll({ include: [ { model: Image, as: 'images' } ] });
     return res.status(201).json(products)
 })
 
 // Filtrar producto por id
 const getProductById = catchError(async(req, res) => {
     const { id } = req.params;
-    const product = await Product.findByPk(id)
+    const product = await Product.findByPk(id, { include: [ { model: Image, as: 'images' } ] })
     return res.status(201).json(product)
 })
 

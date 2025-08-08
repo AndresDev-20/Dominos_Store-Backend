@@ -10,9 +10,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       url: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+       publicId: { // Para eliminar/editar en Cloudinary
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
+      },
+      altText: {
+        type: Sequelize.STRING,
+        allowNull: true
       },
       productId: {
         type: Sequelize.INTEGER,

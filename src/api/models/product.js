@@ -5,6 +5,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
+      // un producto pertenece a una categoria
+      Product.belongsTo(models.Category, {
+        foreignKey: 'categoryId',
+        as: 'category',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      });
+
       // un producto pertenece a un detalle de carrito
       Product.hasOne(models.DetailCart, {
         foreignKey: 'productId',

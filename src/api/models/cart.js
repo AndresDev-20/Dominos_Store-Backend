@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
   class Cart extends Model {
     static associate(models) {
       // define association here
-
       // Un carro pertenece a un usuario
       Cart.belongsTo(models.User, {
         foreignKey: 'userId',

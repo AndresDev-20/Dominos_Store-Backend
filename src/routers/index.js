@@ -11,9 +11,9 @@ const router = express.Router()
 router.use("/roles", roleRouter)
 router.use('/users', userRouter)
 router.use('/products', productRouter)
+router.use('/images', imageRouter)
 router.use('/carts', cartRouter)
 router.use('/detailcarts', detailCartRouter)
-router.use('/images', imageRouter)
 
 
 module.exports = router;

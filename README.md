@@ -81,6 +81,11 @@ Backend del sistema de comercio electrónico **"Dominós Store"**, desarrollado 
 - `PUT /` → Actualizar un detalles del carrito en cantidad y asi mismo su precio
 - `DELETE /` → Eliminar un detalles del carrito.
 
+
+### 🛒 Imagenes `/api/v1/images`
+- `GET /` → Obtener todas las imagenes
+- `POST /` → Crear una nueva imagen con relacion a su producto 
+
 ---
 
 ## 📤 Ejemplos de Peticiones

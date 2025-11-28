@@ -8,3 +8,6 @@ const getAllCategories = catchError(async (req, res) => {
     return res.status(200).json(categories)
 })
 
+module.exports = {
+    getAllCategories,
+}

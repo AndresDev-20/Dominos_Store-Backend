@@ -8,6 +8,13 @@ const getAllCategories = catchError(async (req, res) => {
     return res.status(200).json(categories)
 })
 
+// Crear una nueva categoria
+const createCategory = await catchError(async (req, res) => {
+    const data = req.body;
+    const addCategory = Category.create(data);
+})
+
+
 module.exports = {
     getAllCategories,
 }

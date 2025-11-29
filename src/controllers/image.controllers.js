@@ -15,7 +15,8 @@ const createImage = catchError(async(req, res) => {
     const { productId } = req.body;
     const { url, public_id } = await uploadToCloudinary(path, filename);
     const data = { url, publicId: public_id, altText: public_id, productId: parseInt(productId) }; 
-    await Image.create(data);
+    console.log(data)
+    //await Image.create(data);
     return res.status(201).json(data);
 
 });

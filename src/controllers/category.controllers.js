@@ -9,9 +9,9 @@ const getAllCategories = catchError(async (req, res) => {
 })
 
 // Crear una nueva categoria
-const createCategory = await catchError(async (req, res) => {
+const createCategory = catchError(async (req, res) => {
     const data = req.body;
-    const addCategory = Category.create(data);
+    const addCategory = await Category.create(data);
     return res.status(201).json(addCategory)
 })
 

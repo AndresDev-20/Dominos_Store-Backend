@@ -24,8 +24,9 @@ const createDetailCart = catchError(async(req, res) => {
     const detailExists = await DetailCart.findOne({ where: { productId: data.productId } });
     if(detailExists !== null) return res.status(404).json({error: "Ya el producto esta en el carrito"});
     if(product == null || cart == null) return res.status(404).json({error: "Producto o carrito no encontrado"});
-    console.log(data)
-    //const newDetail = await DetailCart.create(data);
+    const price = product.price * data.amount;
+    data.price = price;
+    const newDetail = await DetailCart.create(data);
     return res.status(201).json({message: "Detalle de carrito creado exitosamente", newDetail: newDetail});
 })
 

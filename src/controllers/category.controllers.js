@@ -12,6 +12,7 @@ const getAllCategories = catchError(async (req, res) => {
 const createCategory = await catchError(async (req, res) => {
     const data = req.body;
     const addCategory = Category.create(data);
+    return
 })
 
 

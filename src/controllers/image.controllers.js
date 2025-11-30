@@ -20,10 +20,13 @@ const createImage = catchError(async(req, res) => {
     if (!result || !result.url) {
         return res.status(500).json({ error: "Cloudinary upload failed" });
     }
-    console.log(result)
-   // await Image.create(data);
+    const data = { 
+        url: result.url, 
+        publicId: result.public_id, 
+        altText: result.public_id, 
+        productId: parseInt(productId) 
+    };
     return res.status(201).json(data);
-
 });
 
 module.exports = {

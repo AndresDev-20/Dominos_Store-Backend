@@ -11,11 +11,16 @@ const getAllImages = catchError(async(req, res) => {
 
 // Crear una imagen 
 const createImage = catchError(async(req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: "No file uploaded" });
+    }
     const { path, filename} = req.file;
     const { productId } = req.body;
-    const { url, public_id } = await uploadToCloudinary(path, filename);
-    const data = { url, publicId: public_id, altText: public_id, productId: parseInt(productId) }; 
-    console.log(public_id)
+    const result = await uploadToCloudinary(path, filename);
+    if (!result || !result.url) {
+        return res.status(500).json({ error: "Cloudinary upload failed" });
+    }
+    console.log(result)
    // await Image.create(data);
     return res.status(201).json(data);
 
